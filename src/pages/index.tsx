@@ -3,9 +3,39 @@ import Main from "../../components/Main"
 import Background from "../../components/Background"
 import Favicon from "react-favicon";
 import Head from 'next/head';
-import LoginMain from "../../components/login/LoginMain";
+import { auth } from "../../components/login/middleware/firebase";
+import { useEffect,useState } from "react";
+import { useRouter } from "next/router";
+import { onAuthStateChanged } from "firebase/auth";
+
+
 
 export default function Home() {
+  const [value,setValue] = useState("");
+  const router = useRouter();
+  const [user,setUser] = useState(null)
+
+const getUser = () =>{
+  setValue(localStorage.getItem("email"))
+}
+
+  useEffect(()=>{
+   onAuthStateChanged(auth,(User)=>{
+
+          if(User){
+            setUser(User)
+            console.log(User.displayName);
+             
+          }
+
+          else{
+            console.log("hello");
+            
+            router.push("/login")
+          }
+    })
+  },[])
+    
  
   return (
     <div className="h-screen w-screen bg-[#343541] overflow-hidden ">

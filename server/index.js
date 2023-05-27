@@ -91,7 +91,16 @@ io.on("connection", (socket) => {
       console.error("Error:", error);
     }
   });
-});
+
+
+    
+
+
+
+}
+
+
+);
 
 app.get("/", (req, res) => {
   res.send("visit spiritualgpt.vercel.app");

@@ -10,7 +10,7 @@ import io from "socket.io-client";
 
 
 type Props = {};
-const apiServer = "https://spiritual-gpt-api.onrender.com";
+const apiServer = "https://spiritualgpt.uw.r.appspot.com/";
 // const apiServer = "http://localhost:5000/";
   const socket=io(apiServer ,{
     transports: ['websocket'], 
